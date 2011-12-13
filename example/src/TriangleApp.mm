@@ -11,20 +11,14 @@ TriangleApp :: ~TriangleApp ()
 }
 
 //--------------------------------------------------------------
-void TriangleApp::setup(){	
-	// register touch events
-	ofRegisterTouchEvents(this);
-	
-	// initialize the accelerometer
+void TriangleApp::setup()
+{	
+	ofRegisterTouchEvents( this );
 	ofxAccelerometer.setup();
-	
-	//iPhoneAlerts will be sent to this.
-	ofxiPhoneAlerts.addListener(this);
-	
-	//If you want a landscape oreintation 
-	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
-	
-	ofBackground(127,127,127);
+	ofxiPhoneAlerts.addListener( this );
+	ofBackground( 127 );
+    
+    font.loadFont( "fonts/mono0755.ttf", 8 );
 }
 
 //--------------------------------------------------------------
@@ -43,14 +37,14 @@ void TriangleApp::draw()
 	ofSetColor( ofColor :: red );
     ofTriangle( x, y - a, x + b, y + b, x - b, y + b );
     
-    x = 20;
+    x = 10;
     y = 0;
     
     ofSetColor( ofColor :: white );
-    ofDrawBitmapString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    ofDrawBitmapString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    ofDrawBitmapString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    ofDrawBitmapString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
 }
 
 //--------------------------------------------------------------

@@ -11,20 +11,14 @@ SquareApp :: ~SquareApp ()
 }
 
 //--------------------------------------------------------------
-void SquareApp::setup(){	
-	// register touch events
-	ofRegisterTouchEvents(this);
-	
-	// initialize the accelerometer
+void SquareApp::setup()
+{	
+	ofRegisterTouchEvents( this );
 	ofxAccelerometer.setup();
-	
-	//iPhoneAlerts will be sent to this.
-	ofxiPhoneAlerts.addListener(this);
-	
-	//If you want a landscape oreintation 
-	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
-	
-	ofBackground(127,127,127);
+	ofxiPhoneAlerts.addListener( this );
+	ofBackground( 127 );
+    
+    font.loadFont( "fonts/mono0755.ttf", 8 );
 }
 
 //--------------------------------------------------------------
@@ -45,14 +39,14 @@ void SquareApp::draw()
 	ofSetColor( ofColor :: red );
     ofRect( x, y, w, h );
     
-    x = 20;
+    x = 10;
     y = 0;
     
     ofSetColor( ofColor :: white );
-    ofDrawBitmapString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    ofDrawBitmapString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    ofDrawBitmapString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    ofDrawBitmapString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
 }
 
 //--------------------------------------------------------------

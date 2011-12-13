@@ -27,6 +27,7 @@ public:
 	void gotMemoryWarning();
 	void deviceOrientationChanged(int newOrientation);
 
+    ofTrueTypeFont font;
 };
 
 
