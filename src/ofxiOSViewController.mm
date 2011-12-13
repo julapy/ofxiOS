@@ -39,13 +39,13 @@
         appPtr = ofPtr<ofBaseApp>( app );
         ofRunApp( appPtr );
         
-        self.glLock = [ [ NSLock alloc ] init ];
+        self.glLock = [ [ [ NSLock alloc ] init ] autorelease ];
         
-        self.glView = [ [ EAGLView alloc ] initWithFrame : frame
-                                                andDepth : iPhoneGetOFWindow()->isDepthEnabled()
-                                                   andAA : iPhoneGetOFWindow()->isAntiAliasingEnabled() 
-                                           andNumSamples : iPhoneGetOFWindow()->getAntiAliasingSampleCount() 
-                                               andRetina : iPhoneGetOFWindow()->isRetinaSupported()];
+        self.glView = [ [ [ EAGLView alloc ] initWithFrame : frame
+                                                  andDepth : iPhoneGetOFWindow()->isDepthEnabled()
+                                                     andAA : iPhoneGetOFWindow()->isAntiAliasingEnabled() 
+                                             andNumSamples : iPhoneGetOFWindow()->getAntiAliasingSampleCount() 
+                                                 andRetina : iPhoneGetOFWindow()->isRetinaSupported() ] autorelease ];
         [ self.view addSubview: self.glView ];
         
         self.animating = NO;
@@ -124,11 +124,9 @@
 
 - (void) timerLoop 
 {
-//    ofxiOSWindow* iosWindow;
-//    iosWindow = (ofxiOSWindow*)[[ UIApplication sharedApplication ] delegate ];
-//    iosWindow->timerLoop();
-    
-    iPhoneGetOFWindow()->timerLoop();
+    ofxiOSWindow* iosWindow;
+    iosWindow = (ofxiOSWindow*)iPhoneGetOFWindow();
+    iosWindow->timerLoop();
 }
 
 - (void)startAnimation
@@ -148,7 +146,11 @@
         }
         else {
 			ofLog(OF_LOG_VERBOSE, "CADisplayLink not supported, running with interval: %i", self.animFrameInterval);
-            self.animTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * self.animFrameInterval) target:self selector:@selector(timerLoop) userInfo:nil repeats:TRUE];
+            self.animTimer = [ NSTimer scheduledTimerWithTimeInterval : (NSTimeInterval)( ( 1.0 / 60.0 ) * self.animFrameInterval )
+                                                               target : self 
+                                                             selector : @selector( timerLoop )
+                                                             userInfo : nil 
+                                                              repeats : TRUE ];
 		}
 		
         self.animating = TRUE;

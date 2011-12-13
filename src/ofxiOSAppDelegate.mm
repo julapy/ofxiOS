@@ -14,12 +14,11 @@
 @implementation ofxiOSAppDelegate
 
 @synthesize window;
-//@synthesize viewController;
 @synthesize glViewController;
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application 
 {    
-	self.window = [ [ UIWindow alloc ] initWithFrame: [ [ UIScreen mainScreen ] bounds ] ];
+	self.window = [ [ [ UIWindow alloc ] initWithFrame: [ [ UIScreen mainScreen ] bounds ] ] autorelease ];
 	[ self.window makeKeyAndVisible ];
 	
 	//----- DAMIAN
@@ -51,7 +50,7 @@
 
 -(void) dealloc 
 {
-    // clean here.
+    self.window = nil;
     
     [ super dealloc ];
 }

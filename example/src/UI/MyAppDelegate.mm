@@ -38,4 +38,11 @@
     return YES;
 }
 
+- (void) dealloc
+{
+    self.navigationController = nil;
+    
+    [ super dealloc ];
+}
+
 @end
