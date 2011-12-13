@@ -98,16 +98,19 @@
 - (void)button1Pressed:(id)sender
 {
     [ self creatApp: new SquareApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    self.navigationController.navigationBar.topItem.title = @"SquareApp";
 }
 
 - (void)button2Pressed:(id)sender
 {
     [ self creatApp: new CircleApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    self.navigationController.navigationBar.topItem.title = @"CircleApp";
 }
 
 - (void)button3Pressed:(id)sender
 {
     [ self creatApp: new TriangleApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    self.navigationController.navigationBar.topItem.title = @"TriangleApp";
 }
 
 - (void) creatApp : (ofBaseApp*)app withFrame : (CGRect)rect

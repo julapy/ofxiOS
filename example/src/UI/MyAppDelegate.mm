@@ -35,6 +35,10 @@
     [ self.navigationController pushViewController : [ [ [ MyAppViewController alloc ] init ] autorelease ]
                                           animated : YES ];
     
+    //--- style the UINavigationController
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    self.navigationController.navigationBar.topItem.title = @"ofxiOS";
+    
     return YES;
 }
 
