@@ -12,7 +12,6 @@
 @interface ofxiOSAppDelegate : ofxiPhoneAppDelegate
 
 @property (nonatomic, retain) UIWindow*             window;
-@property (nonatomic, retain) UIViewController*     viewController;
 @property (nonatomic, retain) ofxiOSViewController* glViewController;
 
 - (EAGLView*) getGLView;

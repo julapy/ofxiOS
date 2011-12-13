@@ -14,17 +14,12 @@
 @implementation ofxiOSAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+//@synthesize viewController;
 @synthesize glViewController;
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application 
 {    
 	self.window = [ [ UIWindow alloc ] initWithFrame: [ [ UIScreen mainScreen ] bounds ] ];
-	
-    if( !self.viewController )
-        self.viewController = [ [ UIViewController alloc ] init ];
-    
-    [ self.window setRootViewController: self.viewController ];
 	[ self.window makeKeyAndVisible ];
 	
 	//----- DAMIAN
