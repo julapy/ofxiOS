@@ -11,6 +11,7 @@
 #import "SquareApp.h"
 #import "CircleApp.h"
 #import "TriangleApp.h"
+#import "ImageApp.h"
 
 @implementation MyAppViewController
 
@@ -42,13 +43,14 @@
     containerView.showsVerticalScrollIndicator = YES;
     containerView.alwaysBounceVertical = YES;
     [self.view addSubview:containerView];
+
+    NSArray *buttonTitles;
+    buttonTitles = [ NSArray arrayWithObjects: @"square", @"circle", @"triangle", @"image", nil ];
     
-    CGRect buttonRect = CGRectMake( 0, 0, screenRect.size.width, screenRect.size.height * 0.25 );
     NSInteger buttonY = 0;
     NSInteger buttonGap = 2;
-    
-    NSArray *buttonTitles;
-    buttonTitles = [ NSArray arrayWithObjects: @"square", @"circle", @"triangle", nil ];
+    NSInteger buttonHeight = ( screenRect.size.height - 44 ) / [ buttonTitles count ] - buttonGap * ( [ buttonTitles count ] - 1 );
+    CGRect buttonRect = CGRectMake( 0, 0, screenRect.size.width, buttonHeight );
     
     for( int i=0; i<[ buttonTitles count ]; i++ )
     {
@@ -63,6 +65,8 @@
             [ button addTarget:self action:@selector(button2Pressed:) forControlEvents:UIControlEventTouchUpInside];
         else if( i == 2 )
             [ button addTarget:self action:@selector(button3Pressed:) forControlEvents:UIControlEventTouchUpInside];
+        else if( i == 3 )
+            [ button addTarget:self action:@selector(button4Pressed:) forControlEvents:UIControlEventTouchUpInside];
         
         buttonY += buttonRect.size.height;
         buttonY += buttonGap;
@@ -111,6 +115,12 @@
 {
     [ self creatApp: new TriangleApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
     self.navigationController.navigationBar.topItem.title = @"TriangleApp";
+}
+
+- (void)button4Pressed:(id)sender
+{
+    [ self creatApp: new ImageApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    self.navigationController.navigationBar.topItem.title = @"ImageApp";
 }
 
 - (void) creatApp : (ofBaseApp*)app withFrame : (CGRect)rect
