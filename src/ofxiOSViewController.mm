@@ -46,7 +46,7 @@
                                                      andAA : iPhoneGetOFWindow()->isAntiAliasingEnabled() 
                                              andNumSamples : iPhoneGetOFWindow()->getAntiAliasingSampleCount() 
                                                  andRetina : iPhoneGetOFWindow()->isRetinaSupported() ] autorelease ];
-        [ self.view addSubview: self.glView ];
+        [ self.view insertSubview: self.glView atIndex: 0 ];
         
         self.animating = NO;
         self.displayLinkSupported = NO;
