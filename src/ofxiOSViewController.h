@@ -29,6 +29,8 @@
 - (void) lockGL;
 - (void) unlockGL;
 
+- (void) timerLoop;
+
 - (void) stopAnimation;
 - (void) startAnimation;
 
