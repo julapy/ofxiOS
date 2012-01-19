@@ -24,54 +24,87 @@
 @synthesize displayLinkSupported;
 @synthesize displayLink;
 
+/////////////////////////////////////////////////
+//  INIT.
+/////////////////////////////////////////////////
+
 - (id) initWithFrame : (CGRect) frame 
                  app : (ofBaseApp*) app
 {
     if( ( self = [ super init ] ) )
     {
-        ofxiOSAppDelegate *iosAppDelegate;
-        iosAppDelegate = (ofxiOSAppDelegate*)[ [ UIApplication sharedApplication ] delegate ];
-        iosAppDelegate.glViewController = self;
-        
-        static ofEventArgs voidEventArgs;
-        
-        ofPtr<ofBaseApp> appPtr;
-        appPtr = ofPtr<ofBaseApp>( app );
-        ofRunApp( appPtr );
-        
-        self.glLock = [ [ [ NSLock alloc ] init ] autorelease ];
-        
-        self.glView = [ [ [ EAGLView alloc ] initWithFrame : frame
-                                                  andDepth : iPhoneGetOFWindow()->isDepthEnabled()
-                                                     andAA : iPhoneGetOFWindow()->isAntiAliasingEnabled() 
-                                             andNumSamples : iPhoneGetOFWindow()->getAntiAliasingSampleCount() 
-                                                 andRetina : iPhoneGetOFWindow()->isRetinaSupported() ] autorelease ];
-        [ self.view insertSubview: self.glView atIndex: 0 ];
-        
-        self.animating = NO;
-        self.displayLinkSupported = NO;
-        self.animFrameInterval = 1;
-        self.displayLink = nil;
-        self.animTimer = nil;
-        
-        ofRegisterTouchEvents((ofxiPhoneApp*)ofGetAppPtr());
-        ofGetAppPtr()->setup();
-        
-#ifdef OF_USING_POCO
-        ofNotifyEvent( ofEvents.setup, voidEventArgs );
-        ofNotifyEvent( ofEvents.update, voidEventArgs );
-#endif
-        
-        glClearColor(ofBgColorPtr()[0], ofBgColorPtr()[1], ofBgColorPtr()[2], ofBgColorPtr()[3]);   //-- clear background
-        glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
-//        ofUpdateBitmapCharacterTexture();
-
+        [ self initGLViewControllerDelegate ];
+        [ self initApp: app ];
+        [ self initGLLock ];
+        [ self initGLViewWithFrame: frame ];
+        [ self initAnimationVars ];
+        [ self setupApp ];
+        [ self clearBuffers ];
         [ self startAnimation ];
     }
     
     return self;
 }
+
+- (void) initGLViewControllerDelegate
+{
+    ofxiOSAppDelegate *iosAppDelegate;
+    iosAppDelegate = (ofxiOSAppDelegate*)[ [ UIApplication sharedApplication ] delegate ];
+    iosAppDelegate.glViewController = self;
+}
+
+- (void) initApp : (ofBaseApp*) app
+{
+    ofPtr<ofBaseApp> appPtr;
+    appPtr = ofPtr<ofBaseApp>( app );
+    ofRunApp( appPtr );
+}
+
+- (void) initGLLock
+{
+    self.glLock = [ [ [ NSLock alloc ] init ] autorelease ];
+}
+
+- (void) initGLViewWithFrame : (CGRect)frame
+{
+    self.glView = [ [ [ EAGLView alloc ] initWithFrame : frame
+                                              andDepth : iPhoneGetOFWindow()->isDepthEnabled()
+                                                 andAA : iPhoneGetOFWindow()->isAntiAliasingEnabled() 
+                                         andNumSamples : iPhoneGetOFWindow()->getAntiAliasingSampleCount() 
+                                             andRetina : iPhoneGetOFWindow()->isRetinaSupported() ] autorelease ];
+    [ self.view insertSubview: self.glView atIndex: 0 ];
+}
+
+- (void) initAnimationVars
+{
+    self.animating = NO;
+    self.displayLinkSupported = NO;
+    self.animFrameInterval = 1;
+    self.displayLink = nil;
+    self.animTimer = nil;
+}
+
+- (void) setupApp
+{
+    ofRegisterTouchEvents((ofxiPhoneApp*)ofGetAppPtr());
+    ofGetAppPtr()->setup();
+    
+#ifdef OF_USING_POCO
+    static ofEventArgs voidEventArgs;
+    ofNotifyEvent( ofEvents.setup, voidEventArgs );
+    ofNotifyEvent( ofEvents.update, voidEventArgs );
+#endif
+}
+
+- (void) clearBuffers
+{
+    glClearColor(ofBgColorPtr()[0], ofBgColorPtr()[1], ofBgColorPtr()[2], ofBgColorPtr()[3]);   //-- clear background
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+/////////////////////////////////////////////////
+//  DEALLOC.
+/////////////////////////////////////////////////
 
 - (void) dealloc
 {
@@ -88,6 +121,10 @@
     
     [ super dealloc ];
 }
+
+/////////////////////////////////////////////////
+//  UI VIEW CONTROLLER.
+/////////////////////////////////////////////////
 
 - (void)loadView  
 {
@@ -112,6 +149,10 @@
     [ super viewDidUnload ];
 }
 
+/////////////////////////////////////////////////
+//  LOCK / UNLOCK.
+/////////////////////////////////////////////////
+
 -(void)lockGL 
 {
 	[ self.glLock lock ];
@@ -121,6 +162,10 @@
 {
 	[ self.glLock unlock ];
 }
+
+/////////////////////////////////////////////////
+//  ANIMATION TIMER.
+/////////////////////////////////////////////////
 
 - (void) timerLoop 
 {

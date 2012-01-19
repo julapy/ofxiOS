@@ -26,6 +26,14 @@
 - (id) initWithFrame : (CGRect) frame 
                  app : (ofBaseApp*) app;
 
+- (void) initGLViewControllerDelegate;
+- (void) initApp : (ofBaseApp*) app;
+- (void) initGLLock;
+- (void) initGLViewWithFrame : (CGRect)frame;
+- (void) initAnimationVars;
+- (void) setupApp;
+- (void) clearBuffers;
+
 - (void) lockGL;
 - (void) unlockGL;
 
