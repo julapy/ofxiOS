@@ -13,6 +13,7 @@
 #import "ofxiOSAppDelegate.h"
 #import "ofxiPhone.h"
 #import "ofxiPhoneExtras.h"
+#import "ofxiOSUtils.h"
 
 @implementation ofxiOSViewController
 
@@ -40,6 +41,7 @@
         [ self initAnimationVars ];
         [ self setupApp ];
         [ self clearBuffers ];
+        [ self reloadTextures ];
         [ self startAnimation ];
     }
     
@@ -100,6 +102,11 @@
 {
     glClearColor(ofBgColorPtr()[0], ofBgColorPtr()[1], ofBgColorPtr()[2], ofBgColorPtr()[3]);   //-- clear background
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+- (void) reloadTextures
+{
+//    ofUpdateBitmapCharacterTexture();     // waiting for this to be incorporated into OF 007 master.
 }
 
 /////////////////////////////////////////////////

@@ -33,6 +33,7 @@
 - (void) initAnimationVars;
 - (void) setupApp;
 - (void) clearBuffers;
+- (void) reloadTextures;
 
 - (void) lockGL;
 - (void) unlockGL;
