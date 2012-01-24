@@ -108,16 +108,18 @@
 
 - (void) dealloc
 {
-    self.glLock = nil;
-    self.glView = nil;
-    
     ofBaseApp *app;
     app = ofGetAppPtr();
-
+    
     if( app )
         app->exit();
     
     ofSetAppPtr( ofPtr<ofBaseApp>( ( app = NULL ) ) );
+    
+    self.glLock = nil;
+    
+    [ self.glView removeFromSuperview ];
+    self.glView = nil;
     
     [ super dealloc ];
 }
