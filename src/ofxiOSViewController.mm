@@ -115,6 +115,18 @@
 
 - (void) dealloc
 {
+    [ self destroy ];   //-- destroy in case it hasn't already been done.
+    [ super dealloc ];
+}
+
+- (void) destroy
+{
+    //------------------------------------------------------------------- remove controller reference.
+    ofxiOSAppDelegate *iosAppDelegate;
+    iosAppDelegate = (ofxiOSAppDelegate*)[ [ UIApplication sharedApplication ] delegate ];
+    iosAppDelegate.glViewController = nil;
+    
+    //------------------------------------------------------------------- destroy app.
     ofBaseApp *app;
     app = ofGetAppPtr();
     
@@ -123,12 +135,15 @@
     
     ofSetAppPtr( ofPtr<ofBaseApp>( ( app = NULL ) ) );
     
-    self.glLock = nil;
+    //------------------------------------------------------------------- stop animation.
+    [ self stopAnimation ];
     
+    //------------------------------------------------------------------- destroy glview.
     [ self.glView removeFromSuperview ];
     self.glView = nil;
     
-    [ super dealloc ];
+    //------------------------------------------------------------------- the rest.
+    self.glLock = nil;
 }
 
 /////////////////////////////////////////////////

@@ -46,4 +46,6 @@
 - (void) setAnimationFrameInterval:(float)frameInterval;
 - (void) setFrameRate:(float)frameRate;
 
+- (void) destroy;
+
 @end
