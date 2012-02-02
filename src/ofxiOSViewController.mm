@@ -106,7 +106,7 @@
 
 - (void) reloadTextures
 {
-    ofUpdateBitmapCharacterTexture();     // waiting for this to be incorporated into OF 007 master.
+//    ofUpdateBitmapCharacterTexture();     // waiting for this to be incorporated into OF 007 master.
 }
 
 /////////////////////////////////////////////////
