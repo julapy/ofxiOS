@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		150FA5DD14E1F01400512910 /* CustomAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5DC14E1F01400512910 /* CustomAppViewController.mm */; };
+		150FA5DD14E1F01400512910 /* SquareAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5DC14E1F01400512910 /* SquareAppViewController.mm */; };
+		150FA5E514E210AA00512910 /* CircleAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5E414E210AA00512910 /* CircleAppViewController.mm */; };
+		150FA5E814E2116C00512910 /* TriangleAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5E714E2116C00512910 /* TriangleAppViewController.mm */; };
+		150FA5EB14E211F400512910 /* ImageAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5EA14E211F300512910 /* ImageAppViewController.mm */; };
 		15435EDB14982814000A6277 /* ImageApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15435EDA14982814000A6277 /* ImageApp.mm */; };
 		15F428A41498176E00412037 /* CircleApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15F428991498176E00412037 /* CircleApp.mm */; };
 		15F428A51498176E00412037 /* SquareApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15F4289B1498176E00412037 /* SquareApp.mm */; };
@@ -27,7 +30,6 @@
 		BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD80F2B2AB500518274 /* QuartzCore.framework */; };
 		BB24DD8F10DA77E000E9C588 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB24DD8C10DA77E000E9C588 /* Default.png */; };
 		BB24DD9010DA77E000E9C588 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB24DD8D10DA77E000E9C588 /* Icon.png */; };
-		BB24DDCA10DA781C00E9C588 /* ofxiphone-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB24DDC910DA781C00E9C588 /* ofxiphone-Info.plist */; };
 		BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */; };
 		E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E41D3ED613B38FB500A75A5D /* Project.xcconfig */; };
 		E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E41D3EE513B3906D00A75A5D /* CoreOF.xcconfig */; };
@@ -57,8 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		150FA5DB14E1F01400512910 /* CustomAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAppViewController.h; sourceTree = "<group>"; };
-		150FA5DC14E1F01400512910 /* CustomAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CustomAppViewController.mm; sourceTree = "<group>"; };
+		150FA5DB14E1F01400512910 /* SquareAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareAppViewController.h; sourceTree = "<group>"; };
+		150FA5DC14E1F01400512910 /* SquareAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SquareAppViewController.mm; sourceTree = "<group>"; };
+		150FA5E314E210AA00512910 /* CircleAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleAppViewController.h; sourceTree = "<group>"; };
+		150FA5E414E210AA00512910 /* CircleAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CircleAppViewController.mm; sourceTree = "<group>"; };
+		150FA5E614E2116C00512910 /* TriangleAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleAppViewController.h; sourceTree = "<group>"; };
+		150FA5E714E2116C00512910 /* TriangleAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TriangleAppViewController.mm; sourceTree = "<group>"; };
+		150FA5E914E211F300512910 /* ImageAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAppViewController.h; sourceTree = "<group>"; };
+		150FA5EA14E211F300512910 /* ImageAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageAppViewController.mm; sourceTree = "<group>"; };
 		15435ED914982814000A6277 /* ImageApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageApp.h; sourceTree = "<group>"; };
 		15435EDA14982814000A6277 /* ImageApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageApp.mm; sourceTree = "<group>"; };
 		15F428981498176E00412037 /* CircleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleApp.h; sourceTree = "<group>"; };
@@ -158,8 +166,14 @@
 				15F428A11498176E00412037 /* MyAppDelegate.mm */,
 				15F428A21498176E00412037 /* MyAppViewController.h */,
 				15F428A31498176E00412037 /* MyAppViewController.mm */,
-				150FA5DB14E1F01400512910 /* CustomAppViewController.h */,
-				150FA5DC14E1F01400512910 /* CustomAppViewController.mm */,
+				150FA5DB14E1F01400512910 /* SquareAppViewController.h */,
+				150FA5DC14E1F01400512910 /* SquareAppViewController.mm */,
+				150FA5E314E210AA00512910 /* CircleAppViewController.h */,
+				150FA5E414E210AA00512910 /* CircleAppViewController.mm */,
+				150FA5E614E2116C00512910 /* TriangleAppViewController.h */,
+				150FA5E714E2116C00512910 /* TriangleAppViewController.mm */,
+				150FA5E914E211F300512910 /* ImageAppViewController.h */,
+				150FA5EA14E211F300512910 /* ImageAppViewController.mm */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -350,7 +364,6 @@
 			files = (
 				BB24DD8F10DA77E000E9C588 /* Default.png in Resources */,
 				BB24DD9010DA77E000E9C588 /* Icon.png in Resources */,
-				BB24DDCA10DA781C00E9C588 /* ofxiphone-Info.plist in Resources */,
 				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
 				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
 			);
@@ -389,7 +402,10 @@
 				15F428FC1498187300412037 /* ofxiOSViewController.mm in Sources */,
 				15F428FD1498187300412037 /* ofxiOSWindow.mm in Sources */,
 				15435EDB14982814000A6277 /* ImageApp.mm in Sources */,
-				150FA5DD14E1F01400512910 /* CustomAppViewController.mm in Sources */,
+				150FA5DD14E1F01400512910 /* SquareAppViewController.mm in Sources */,
+				150FA5E514E210AA00512910 /* CircleAppViewController.mm in Sources */,
+				150FA5E814E2116C00512910 /* TriangleAppViewController.mm in Sources */,
+				150FA5EB14E211F400512910 /* ImageAppViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

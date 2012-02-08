@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ofMain.h"
 
 @interface MyAppViewController : UIViewController
-
-- (UIButton*) makeButtonWithFrame : (CGRect)frame 
-                          andText : (NSString*)text;
-
-- (void) creatApp : (ofBaseApp*)app withFrame : (CGRect)rect;
 
 @end

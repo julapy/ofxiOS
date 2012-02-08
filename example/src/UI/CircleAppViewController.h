@@ -8,6 +8,6 @@
 
 #import "ofxiOSViewController.h"
 
-@interface CustomAppViewController : ofxiOSViewController
+@interface CircleAppViewController : ofxiOSViewController
 
 @end

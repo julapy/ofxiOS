@@ -7,11 +7,17 @@
 //
 
 #import "MyAppViewController.h"
-//#import "ofxiOSViewController.h"
-#import "CustomAppViewController.h"
+
+#import "SquareAppViewController.h"
 #import "SquareApp.h"
+
+#import "CircleAppViewController.h"
 #import "CircleApp.h"
+
+#import "TriangleAppViewController.h"
 #import "TriangleApp.h"
+
+#import "ImageAppViewController.h"
 #import "ImageApp.h"
 
 @implementation MyAppViewController
@@ -19,6 +25,29 @@
 - (void)viewDidAppear:(BOOL)animated 
 {
     [super viewDidAppear:animated];
+}
+
+- (UIButton*) makeButtonWithFrame : (CGRect)frame 
+                          andText : (NSString*)text
+{
+    UIFont *font;
+    font = [ UIFont fontWithName:@"Georgia" size:30 ];
+    
+    UILabel *label;
+    label = [[[ UILabel alloc ] initWithFrame: CGRectMake( 0, 0, frame.size.width, frame.size.height ) ] autorelease ];
+    label.backgroundColor = [ UIColor colorWithWhite: 1 alpha: 0.95 ];
+    label.textColor = [ UIColor colorWithWhite: 0 alpha: 1 ];
+    label.text = [ text uppercaseString ];
+    label.textAlignment = UITextAlignmentCenter;
+    label.font = font;
+    label.userInteractionEnabled = NO;
+    label.exclusiveTouch = NO;
+    
+    UIButton* button = [[[ UIButton alloc ] initWithFrame: frame ] autorelease ];
+    [ button setBackgroundColor: [ UIColor clearColor ] ];
+    [ button addSubview: label ];
+    
+    return button;
 }
 
 - (void)loadView  
@@ -76,62 +105,44 @@
     containerView.contentSize = CGSizeMake( buttonRect.size.width, buttonRect.size.height * 3 );
 }
 
-- (UIButton*) makeButtonWithFrame : (CGRect)frame 
-                          andText : (NSString*)text
-{
-    UIFont *font;
-    font = [ UIFont fontWithName:@"Georgia" size:30 ];
-    
-    UILabel *label;
-    label = [[[ UILabel alloc ] initWithFrame: CGRectMake( 0, 0, frame.size.width, frame.size.height ) ] autorelease ];
-    label.backgroundColor = [ UIColor colorWithWhite: 1 alpha: 0.95 ];
-    label.textColor = [ UIColor colorWithWhite: 0 alpha: 1 ];
-    label.text = [ text uppercaseString ];
-    label.textAlignment = UITextAlignmentCenter;
-    label.font = font;
-    label.userInteractionEnabled = NO;
-    label.exclusiveTouch = NO;
-    
-    UIButton* button = [[[ UIButton alloc ] initWithFrame: frame ] autorelease ];
-    [ button setBackgroundColor: [ UIColor clearColor ] ];
-    [ button addSubview: label ];
-    
-    return button;
-    
-}
-
 - (void)button1Pressed:(id)sender
 {
-    [ self creatApp: new SquareApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    SquareAppViewController *viewController;
+    viewController = [[[ SquareAppViewController alloc ] initWithFrame : [ [ UIScreen mainScreen ] bounds ]
+                                                                   app : new SquareApp() ] autorelease ];
+    
+    [ self.navigationController pushViewController : viewController animated : YES ];
     self.navigationController.navigationBar.topItem.title = @"SquareApp";
 }
 
 - (void)button2Pressed:(id)sender
 {
-    [ self creatApp: new CircleApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    CircleAppViewController *viewController;
+    viewController = [[[ CircleAppViewController alloc ] initWithFrame : [ [ UIScreen mainScreen ] bounds ]
+                                                                   app : new CircleApp() ] autorelease ];
+    
+    [ self.navigationController pushViewController : viewController animated : YES ];
     self.navigationController.navigationBar.topItem.title = @"CircleApp";
 }
 
 - (void)button3Pressed:(id)sender
 {
-    [ self creatApp: new TriangleApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
+    TriangleAppViewController *viewController;
+    viewController = [[[ TriangleAppViewController alloc ] initWithFrame : [ [ UIScreen mainScreen ] bounds ]
+                                                                     app : new TriangleApp() ] autorelease ];
+    
+    [ self.navigationController pushViewController : viewController animated : YES ];
     self.navigationController.navigationBar.topItem.title = @"TriangleApp";
 }
 
 - (void)button4Pressed:(id)sender
 {
-    [ self creatApp: new ImageApp() withFrame: [ [ UIScreen mainScreen ] bounds ] ];
-    self.navigationController.navigationBar.topItem.title = @"ImageApp";
-}
-
-- (void) creatApp : (ofBaseApp*)app withFrame : (CGRect)rect
-{
-    CustomAppViewController *glViewController;
-    glViewController = [[[ CustomAppViewController alloc ] initWithFrame : rect
-                                                                     app : app ] autorelease ];
+    ImageAppViewController *viewController;
+    viewController = [[[ ImageAppViewController alloc ] initWithFrame : [ [ UIScreen mainScreen ] bounds ]
+                                                                  app : new ImageApp() ] autorelease ];
     
-    [ self.navigationController pushViewController : glViewController
-                                          animated : YES ];
+    [ self.navigationController pushViewController : viewController animated : YES ];
+    self.navigationController.navigationBar.topItem.title = @"ImageApp";
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
