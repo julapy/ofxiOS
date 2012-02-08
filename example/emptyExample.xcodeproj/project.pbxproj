@@ -152,14 +152,14 @@
 		150FA5F914E2157000512910 /* AppViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				150FA5FA14E2157000512910 /* CircleAppViewController.h */,
-				150FA5FB14E2157000512910 /* CircleAppViewController.mm */,
-				150FA5FC14E2157000512910 /* ImageAppViewController.h */,
-				150FA5FD14E2157000512910 /* ImageAppViewController.mm */,
 				150FA5FE14E2157000512910 /* SquareAppViewController.h */,
 				150FA5FF14E2157000512910 /* SquareAppViewController.mm */,
+				150FA5FA14E2157000512910 /* CircleAppViewController.h */,
+				150FA5FB14E2157000512910 /* CircleAppViewController.mm */,
 				150FA60014E2157000512910 /* TriangleAppViewController.h */,
 				150FA60114E2157000512910 /* TriangleAppViewController.mm */,
+				150FA5FC14E2157000512910 /* ImageAppViewController.h */,
+				150FA5FD14E2157000512910 /* ImageAppViewController.mm */,
 			);
 			path = AppViewControllers;
 			sourceTree = "<group>";
@@ -179,9 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				15F4289E1498176E00412037 /* main.mm */,
+				150FA60614E2157C00512910 /* UI */,
 				150FA5EC14E214F500512910 /* Apps */,
 				150FA5F914E2157000512910 /* AppViewControllers */,
-				150FA60614E2157C00512910 /* UI */,
 			);
 			path = src;
 			sourceTree = "<group>";
