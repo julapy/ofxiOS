@@ -18,7 +18,11 @@ void TriangleApp::setup()
 	ofxiPhoneAlerts.addListener( this );
 	ofBackground( 127 );
     
-    font.loadFont( "fonts/mono0755.ttf", 8 );
+    int fontSize = 8;
+    if( ofxiPhoneGetOFWindow()->isRetinaSupported() )
+        fontSize *= 2;
+    
+    font.loadFont( "fonts/mono0755.ttf", fontSize );
 }
 
 //--------------------------------------------------------------
@@ -29,22 +33,24 @@ void TriangleApp::update(){
 //--------------------------------------------------------------
 void TriangleApp::draw()
 {
-    int a = 100;
+    int a = MIN( ofGetWidth(), ofGetHeight() ) * 0.3;
     int b = sqrt( a * a + a * a );
     int x = ofGetWidth()  * 0.5;
-    int y = ofGetHeight() * 0.5 - 50;
+    int y = ofGetHeight() * 0.5;
+    int p = 0;
     
 	ofSetColor( ofColor :: red );
     ofTriangle( x, y - a, x + b, y + b, x - b, y + b );
     
-    x = 10;
-    y = 0;
+    x = ofGetWidth()  * 0.2;
+    y = ofGetHeight() * 0.11;
+    p = ofGetHeight() * 0.035;
     
     ofSetColor( ofColor :: white );
-    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=p );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=p );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=p );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=p );
 }
 
 //--------------------------------------------------------------

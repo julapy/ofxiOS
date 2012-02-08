@@ -18,7 +18,11 @@ void SquareApp::setup()
 	ofxiPhoneAlerts.addListener( this );
 	ofBackground( 127 );
     
-    font.loadFont( "fonts/mono0755.ttf", 8 );
+    int fontSize = 8;
+    if( ofxiPhoneGetOFWindow()->isRetinaSupported() )
+        fontSize *= 2;
+
+    font.loadFont( "fonts/mono0755.ttf", fontSize );
 }
 
 //--------------------------------------------------------------
@@ -31,22 +35,24 @@ void SquareApp::draw()
 {
     ofEnableAlphaBlending();
     
-    int w = 200;
-    int h = 200;
+    int w = MIN( ofGetWidth(), ofGetHeight() ) * 0.6;
+    int h = w;
     int x = ( ofGetWidth()  - w ) * 0.5;
     int y = ( ofGetHeight() - h ) * 0.5;
+    int p = 0;
     
 	ofSetColor( ofColor :: red );
     ofRect( x, y, w, h );
     
-    x = 10;
-    y = 0;
+    x = ofGetWidth()  * 0.2;
+    y = ofGetHeight() * 0.11;
+    p = ofGetHeight() * 0.035;
     
     ofSetColor( ofColor :: white );
-    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=p );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=p );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=p );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=p );
 }
 
 //--------------------------------------------------------------

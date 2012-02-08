@@ -25,6 +25,9 @@ int main()
          **/
         
         ofxiOSWindow *iosWindow = new ofxiOSWindow();
+        iosWindow->enableDepthBuffer();                 // OPTIONAL - you will need to turn this on if drawing 3d.
+        iosWindow->enableRetinaSupport();               // OPTIONAL - this turns on retina support for iPhone4 and upwards.
+        
         ofSetupOpenGL( ofPtr<ofAppBaseWindow>( iosWindow ), 1024,768, OF_FULLSCREEN );
         iosWindow->startAppWithDelegate( "MyAppDelegate" );
     }

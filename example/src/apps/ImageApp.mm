@@ -18,7 +18,11 @@ void ImageApp::setup()
 	ofxiPhoneAlerts.addListener( this );
 	ofBackground( 127 );
     
-    font.loadFont( "fonts/mono0755.ttf", 8 );
+    int fontSize = 8;
+    if( ofxiPhoneGetOFWindow()->isRetinaSupported() )
+        fontSize *= 2;
+    
+    font.loadFont( "fonts/mono0755.ttf", fontSize );
     
     image.loadImage( "images/dive.jpg" );
 }
@@ -33,18 +37,20 @@ void ImageApp::draw()
 {
     int x = ( ofGetWidth()  - image.width  ) * 0.5;
     int y = ( ofGetHeight() - image.height ) * 0.5;
+    int p = 0;
     
 	ofSetColor( ofColor :: white );
     image.draw( x, y );
     
-    x = 10;
-    y = 0;
+    x = ofGetWidth()  * 0.2;
+    y = ofGetHeight() * 0.11;
+    p = ofGetHeight() * 0.035;
     
     ofSetColor( ofColor :: white );
-    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=p );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=p );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=p );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=p );
 }
 
 //--------------------------------------------------------------

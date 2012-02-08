@@ -36,7 +36,7 @@
                                           animated : YES ];
     
     //--- style the UINavigationController
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationController.navigationBar.topItem.title = @"ofxiOS";
     
     return YES;

@@ -7,7 +7,8 @@
 //
 
 #import "MyAppViewController.h"
-#import "ofxiOSViewController.h"
+//#import "ofxiOSViewController.h"
+#import "CustomAppViewController.h"
 #import "SquareApp.h"
 #import "CircleApp.h"
 #import "TriangleApp.h"
@@ -47,7 +48,7 @@
     NSArray *buttonTitles;
     buttonTitles = [ NSArray arrayWithObjects: @"square", @"circle", @"triangle", @"image", nil ];
     
-    NSInteger buttonY = 0;
+    NSInteger buttonY = 44;     // make room for navigation bar.
     NSInteger buttonGap = 2;
     NSInteger buttonHeight = ( screenRect.size.height - 44 ) / [ buttonTitles count ] - buttonGap * ( [ buttonTitles count ] - 1 );
     CGRect buttonRect = CGRectMake( 0, 0, screenRect.size.width, buttonHeight );
@@ -125,12 +126,21 @@
 
 - (void) creatApp : (ofBaseApp*)app withFrame : (CGRect)rect
 {
-    ofxiOSViewController *glViewController;
-    glViewController = [[[ ofxiOSViewController alloc ] initWithFrame : rect
-                                                                  app : app ] autorelease ];
+    CustomAppViewController *glViewController;
+    glViewController = [[[ CustomAppViewController alloc ] initWithFrame : rect
+                                                                     app : app ] autorelease ];
     
     [ self.navigationController pushViewController : glViewController
                                           animated : YES ];
+}
+
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    BOOL bRotate = NO;
+    bRotate = bRotate || ( toInterfaceOrientation == UIInterfaceOrientationPortrait );
+    bRotate = bRotate || ( toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
+    
+    return bRotate;
 }
 
 @end

@@ -18,7 +18,11 @@ void CircleApp::setup()
 	ofxiPhoneAlerts.addListener( this );
 	ofBackground( 127 );
     
-    font.loadFont( "fonts/mono0755.ttf", 8 );
+    int fontSize = 8;
+    if( ofxiPhoneGetOFWindow()->isRetinaSupported() )
+        fontSize *= 2;
+    
+    font.loadFont( "fonts/mono0755.ttf", fontSize );
 }
 
 //--------------------------------------------------------------
@@ -31,18 +35,21 @@ void CircleApp::draw()
 {
     int x = ofGetWidth()  * 0.5;
     int y = ofGetHeight() * 0.5;
+    int r = MIN( ofGetWidth(), ofGetHeight() ) * 0.3;
+    int p = 0;
     
 	ofSetColor( ofColor :: red );
-    ofCircle( x, y, 100 );
+    ofCircle( x, y, r );
     
-    x = 10;
-    y = 0;
+    x = ofGetWidth()  * 0.2;
+    y = ofGetHeight() * 0.11;
+    p = ofGetHeight() * 0.035;
     
     ofSetColor( ofColor :: white );
-    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=20 );
-    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=20 );
-    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=20 );
-    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=20 );
+    font.drawString( "frame num      = " + ofToString( ofGetFrameNum() ),    x, y+=p );
+    font.drawString( "frame rate     = " + ofToString( ofGetFrameRate() ),   x, y+=p );
+    font.drawString( "screen width   = " + ofToString( ofGetWidth() ),       x, y+=p );
+    font.drawString( "screen height  = " + ofToString( ofGetHeight() ),      x, y+=p );
 }
 
 //--------------------------------------------------------------

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150FA5DD14E1F01400512910 /* CustomAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 150FA5DC14E1F01400512910 /* CustomAppViewController.mm */; };
 		15435EDB14982814000A6277 /* ImageApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15435EDA14982814000A6277 /* ImageApp.mm */; };
 		15F428A41498176E00412037 /* CircleApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15F428991498176E00412037 /* CircleApp.mm */; };
 		15F428A51498176E00412037 /* SquareApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15F4289B1498176E00412037 /* SquareApp.mm */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150FA5DB14E1F01400512910 /* CustomAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAppViewController.h; sourceTree = "<group>"; };
+		150FA5DC14E1F01400512910 /* CustomAppViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CustomAppViewController.mm; sourceTree = "<group>"; };
 		15435ED914982814000A6277 /* ImageApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageApp.h; sourceTree = "<group>"; };
 		15435EDA14982814000A6277 /* ImageApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageApp.mm; sourceTree = "<group>"; };
 		15F428981498176E00412037 /* CircleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleApp.h; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				15F428A11498176E00412037 /* MyAppDelegate.mm */,
 				15F428A21498176E00412037 /* MyAppViewController.h */,
 				15F428A31498176E00412037 /* MyAppViewController.mm */,
+				150FA5DB14E1F01400512910 /* CustomAppViewController.h */,
+				150FA5DC14E1F01400512910 /* CustomAppViewController.mm */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				15F428FC1498187300412037 /* ofxiOSViewController.mm in Sources */,
 				15F428FD1498187300412037 /* ofxiOSWindow.mm in Sources */,
 				15435EDB14982814000A6277 /* ImageApp.mm in Sources */,
+				150FA5DD14E1F01400512910 /* CustomAppViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
