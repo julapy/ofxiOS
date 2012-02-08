@@ -22,11 +22,6 @@
 
 @implementation MyAppViewController
 
-- (void)viewDidAppear:(BOOL)animated 
-{
-    [super viewDidAppear:animated];
-}
-
 - (UIButton*) makeButtonWithFrame : (CGRect)frame 
                           andText : (NSString*)text
 {
