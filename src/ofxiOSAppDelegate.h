@@ -9,10 +9,11 @@
 #import "ofxiPhoneAppDelegate.h"
 #import "ofxiOSViewController.h"
 
-@interface ofxiOSAppDelegate : ofxiPhoneAppDelegate
+@interface ofxiOSAppDelegate : ofxiPhoneAppDelegate <UIAlertViewDelegate>
 
-@property (nonatomic, retain) UIWindow*             window;
-@property (nonatomic, retain) ofxiOSViewController* glViewController;
+@property (nonatomic, retain) UIWindow              *window;
+@property (nonatomic, retain) UIWindow              *externalWindow;
+@property (nonatomic, retain) ofxiOSViewController  *glViewController;
 
 - (EAGLView*) getGLView;
 - (void) lockGL;

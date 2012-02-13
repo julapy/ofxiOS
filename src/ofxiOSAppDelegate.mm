@@ -14,12 +14,40 @@
 @implementation ofxiOSAppDelegate
 
 @synthesize window;
+@synthesize externalWindow;
 @synthesize glViewController;
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application 
 {    
 	self.window = [ [ [ UIWindow alloc ] initWithFrame: [ [ UIScreen mainScreen ] bounds ] ] autorelease ];
 	[ self.window makeKeyAndVisible ];
+    
+    self.externalWindow = [ [ [ UIWindow alloc ] initWithFrame: CGRectMake( 0, 0, 1024, 768 ) ] autorelease ];
+    self.externalWindow.hidden = YES;
+    
+	if( [ [ UIScreen screens ] count ] > 1 )    // Check for external screen.
+    {
+        UIScreen *externalScreen;
+		externalScreen = [ [ UIScreen screens ] objectAtIndex : 1 ];
+		
+		UIAlertView *alert = [[[UIAlertView alloc] initWithTitle : @"External Display Size" 
+														 message : @"Choose a size for the external display." 
+														delegate : self 
+											   cancelButtonTitle : nil 
+											   otherButtonTitles : nil] autorelease];
+
+		for( UIScreenMode *mode in externalScreen.availableModes )
+        {
+			CGSize modeScreenSize = mode.size;
+			[alert addButtonWithTitle:[NSString stringWithFormat:@"%.0f x %.0f pixels", modeScreenSize.width, modeScreenSize.height]];
+		}
+        
+		[ alert show ];
+	} 
+    else 
+    {
+		self.externalWindow = nil;
+	}
 	
 	//----- DAMIAN
 	// set data path root for ofToDataPath()
@@ -51,6 +79,7 @@
 -(void) dealloc 
 {
     self.window = nil;
+    self.externalWindow = nil;
     
     [ super dealloc ];
 }
@@ -98,6 +127,30 @@
 - (void) unlockGL 
 {
     [ glViewController unlockGL ];
+}
+
+////////////////////////////////////////////////////////
+//  OVERRIDING BASE CLASS METHOD.
+////////////////////////////////////////////////////////
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    UIScreen *externalScreen;
+    externalScreen = [ [ UIScreen screens ] objectAtIndex : 1 ];
+    
+    UIScreenMode *screenMode;
+    screenMode = [ externalScreen.availableModes objectAtIndex: buttonIndex ];;
+    externalScreen.currentMode = screenMode;
+    
+	self.externalWindow.screen = externalScreen;
+	
+	CGRect rect = CGRectZero;
+	rect.size = screenMode.size;
+	self.externalWindow.frame = rect;
+	self.externalWindow.clipsToBounds = YES;
+	
+	self.externalWindow.hidden = NO;
+	[ self.externalWindow makeKeyAndVisible ];
 }
 
 @end

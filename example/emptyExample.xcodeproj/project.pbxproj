@@ -192,7 +192,7 @@
 				15F428EA1498187300412037 /* src */,
 			);
 			name = ofxiOS;
-			path = ../../../addons/ofxiOS;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		15F428EA1498187300412037 /* src */ = {
